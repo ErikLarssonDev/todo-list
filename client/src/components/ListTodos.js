@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import EditTodo from './EditTodo'
+
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -41,11 +44,10 @@ const ListTodos = () => {
 
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{ }} aria-label="simple table">
                 <TableHead>
                     <TableRow key="rows">
                         <TableCell>Todos</TableCell>
-                        <TableCell align="right"></TableCell>
                         <TableCell align="right"></TableCell>
                     </TableRow>
                 </TableHead>
@@ -58,8 +60,7 @@ const ListTodos = () => {
                             <TableCell component="th" scope="row">
                                 {row.description}
                             </TableCell>
-                            <TableCell align="right"><Button variant="outlined" color="error" onClick={() => deleteTodo(row.todo_id)}>Delete</Button></TableCell>
-                            <TableCell align="right"></TableCell>
+                            <TableCell sx={{display: 'flex', justifyContent: 'flex-end'}}><Button variant="outlined" color="error" sx={{marginX: 1}} onClick={() => deleteTodo(row.todo_id)}>Delete</Button><EditTodo todo={row}/></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
